@@ -4514,8 +4514,7 @@ class PlayState extends MusicBeatState
 	#if mobile
 	private function onButtonPress(button:TouchButton):Void
 	{
-		// var buttonCode:Int = (button.IDs[0].toString().startsWith('NOTE')) ? button.IDs[0] : button.IDs[1];
-		var buttonCode:Int = (button.IDs.filter(id -> id.toString().startsWith("EXTRA")).length > 0);
+		var buttonCode:Int = (button.IDs[0].toString().startsWith('NOTE')) ? button.IDs[0] : button.IDs[1];
 
 		if (!cpuControlled && startedCountdown && !paused && buttonCode > -1 && button.justPressed)
 		{
@@ -4610,8 +4609,7 @@ class PlayState extends MusicBeatState
 
 	private function onButtonRelease(button:TouchButton):Void
 	{
-		// var buttonCode:Int = (button.IDs[0].toString().startsWith('NOTE')) ? button.IDs[0] : button.IDs[1];
-		var buttonCode:Int = (button.IDs.filter(id -> id.toString().startsWith("EXTRA")).length > 0);
+		var buttonCode:Int = (button.IDs[0].toString().startsWith('NOTE')) ? button.IDs[0] : button.IDs[1];
 
 		if (!cpuControlled && startedCountdown && !paused && buttonCode > -1)
 		{
