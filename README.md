@@ -23,6 +23,7 @@ otherwise, you can delete the "VIDEOS_ALLOWED" Line on Project.xml
 ## Tamplate Credits
 * Ali Alafandy - Templator
 * XPumpkingGuyX - Compiler
+* Ethantobot - Reformer
 
 ## Mobile Credits:
 * Lily - Head Porter
