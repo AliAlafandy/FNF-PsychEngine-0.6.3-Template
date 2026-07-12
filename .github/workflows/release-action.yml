@@ -4,7 +4,7 @@ on: workflow_dispatch
 permissions: write-all
 
 env:
-  PROJECT_NAME: PsychEngine
+  PROJECT_NAME: ModsEngine
 
 jobs:
   build:
@@ -32,10 +32,15 @@ jobs:
             buildArgs: "mac -final"
             artifactName: MacOS
             artifactPath: export/release/macos/bin/*
-          - name: Android
+          - name: Android x64
             os: macos-15
-            buildArgs: "android -final -D officialBuild"
-            artifactName: Android
+            buildArgs: "android -final -ONLY_ARM64"
+            artifactName: Android x64
+            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
+          - name: Android x32
+            os: macos-15
+            buildArgs: "android -final -ONLY_ARMV7"
+            artifactName: Android x32
             artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
           - name: iOS
             os: macos-15
@@ -64,19 +69,21 @@ jobs:
            zip -r Windows x32.zip Windows x32/
            zip -r Linux.zip Linux/
            zip -r MacOS.zip MacOS/
-           zip -r Android.zip Android/
+           zip -r Android x64.zip Android x64/
+           zip -r Android x32.zip Android x32/
            zip -r iOS.zip iOS/
 
       - name: Publish The Release
         uses: softprops/action-gh-release@v2
         with:
-          name: "Template"
-          tag_name: "0.6.3"
+          name: "6.9.9"
+          tag_name: "6.9.9"
           make_latest: false
           files: |
             Windows x64.zip
             Windows x32.zip
             Linux.zip
             MacOS.zip
-            Android.zip
+            Android x64.zip
+            Android x32.zip
             iOS.zip
